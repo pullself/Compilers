@@ -1,6 +1,6 @@
 # Compilers
 
-![](https://img.shields.io/badge/language-python-green.svg) ![](https://img.shields.io/apm/l/vim-mode.svg)
+![](https://img.shields.io/badge/language-python-green.svg)  ![](https://img.shields.io/apm/l/vim-mode.svg)
 
 龙书附录A文法，自底向上LR（1）分析实现
 
