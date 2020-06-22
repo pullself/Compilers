@@ -40,7 +40,7 @@ python main.py -a {代码文件地址}
 ## 文件结构
 
 ```
-C:.
+.
 │  action.json // action表
 │  code.txt // 代码文件
 │  code_analyst.py // 代码行数统计
