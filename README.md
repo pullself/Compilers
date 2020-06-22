@@ -37,4 +37,70 @@ python main.py -c {文法文件地址}
 ```
 python main.py -a {代码文件地址}
 ```
+## 文件结构
 
+```
+C:.
+│  action.json // action表
+│  code.txt // 代码文件
+│  code_analyst.py // 代码行数统计
+│  goto.json // goto表
+│  grammar.json // 文法表
+│  grammar.txt // 文法文件
+│  Intermediate_Language.txt // 中间代码文件
+│  LICENSE
+│  main.py //程序入口
+│  README.md
+│  
+└─libs
+    │  __init__.py
+    │  
+    ├─lexers
+    │      lexer.py // 词法分析器
+    │      num.py
+    │      real.py
+    │      tag.py
+    │      token.py
+    │      word.py
+    │      __init__.py
+    │      
+    ├─parsers
+    │      constructor.py // 分析表生成器
+    │      data.py
+    │      first.py
+    │      generator.py
+    │      parser.py // 语法分析器
+    │      __init__.py
+    │      
+    ├─rules
+    │      access.py
+    │      arith.py
+    │      constant.py
+    │      do.py
+    │      expr.py
+    │      id.py
+    │      logical.py
+    │      node.py
+    │      op.py
+    │      rel.py
+    │      seq.py
+    │      set.py
+    │      setelem.py
+    │      stmt.py
+    │      temp.py
+    │      unary.py
+    │      _and.py
+    │      _break.py
+    │      _else.py
+    │      _if.py
+    │      _not.py
+    │      _or.py
+    │      _while.py
+    │      __init__.py
+    │      
+    └─symbols
+            array.py
+            env.py
+            type.py
+            __init__.py
+```
