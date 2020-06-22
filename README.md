@@ -53,7 +53,7 @@ L4:	j = j - 1
 L7:	t3 = j * 8
 	t4 = a [ t3 ] 
 	if t4 > v goto L4
-L6:	if false i >= j goto L8
+L6:	if not i >= j goto L8
 L9:	goto L2
 L8:	t5 = i * 8
 	x = a [ t5 ] 
