@@ -27,6 +27,7 @@ from libs.rules._break import Break
 from libs.rules.set import Set
 from libs.rules.setelem import SetElem
 from libs.rules.seq import Seq
+from libs.statistic.visualization import Table
 
 
 class Parser:
@@ -48,7 +49,9 @@ class Parser:
         self.set_action(ac_addr)
         self.set_goto(goto_addr)
         self.set_grammar(grammar_addr)
-        f=open('Intermediate_Language.txt', "w+")
+        self.output = Table()
+        self.output.add_field(['序号', '状态栈', '符号栈', '当前字符', '动作'])
+        f = open('Intermediate_Language.txt', "w+")
         f.close()
 
     def __get_nxt_word(self) -> str:
@@ -92,6 +95,7 @@ class Parser:
         while 1:
             ac = self.__action[self.__sta_stack[-1]][wd_ori]
             if ac == 'acc':
+                self.output.show()
                 return 'Finish'
             elif ac is None:
                 self.__error('Invalid Syntax')
@@ -101,7 +105,9 @@ class Parser:
                 self.__value_stack.append(wd)
                 if wd_ori == 'while' or wd_ori == 'do':
                     Break.loop_flag.append(len(Break.break_list))
-                print(self.__sta_stack, self.__word_stack)
+                # print(self.__sta_stack, self.__word_stack)
+                self.output.add_row(
+                    [self.__sta_stack, self.__word_stack, wd_ori, '移入'])
                 # print(self.__value_stack)
                 wd = self.__get_nxt_word()
                 if wd.tag == Tag.ERROR:
@@ -170,7 +176,12 @@ class Parser:
                 else:
                     # factor
                     self.__factor(num)
-                print(self.__sta_stack, self.__word_stack)
+                # print(self.__sta_stack, self.__word_stack)
+                s = '归约' + r[0] + '->'
+                for i in r[1]:
+                    s += i
+                self.output.add_row(
+                    [self.__sta_stack, self.__word_stack, wd_ori, s])
                 # print(self.__value_stack)
 
     def __program(self):
@@ -273,20 +284,20 @@ class Parser:
             cond = self.cache[2]
             stmt = self.cache[4]
             x = Whlie()
-            for i in range(Break.loop_flag[-1],len(Break.break_list)):
+            for i in range(Break.loop_flag[-1], len(Break.break_list)):
                 Break.break_list[i].stmt = x
             Break.loop_flag.pop()
-            x.init(cond,stmt)
+            x.init(cond, stmt)
         elif num == 14:
             # do语句
             stmt = self.cache[1]
             cond = self.cache[4]
             x = Do()
             Break.loop_flag.pop()
-            for i in range(Break.loop_flag[-1],len(Break.break_list)):
+            for i in range(Break.loop_flag[-1], len(Break.break_list)):
                 Break.break_list[i].stmt = x
             Break.loop_flag.pop()
-            x.init(stmt,cond)
+            x.init(stmt, cond)
         elif num == 15:
             # break语句
             x = Break()
