@@ -37,17 +37,44 @@ python main.py -c {文法文件地址}
 ```
 python main.py -a {代码文件地址}
 ```
+
+## 中间代码输出格式
+
+```
+L1:L3:	i = i + 1
+L5:	t1 = i * 8
+	t2 = a [ t1 ] 
+	if t2 < v goto L3
+L4:	j = j - 1
+L7:	t3 = j * 8
+	t4 = a [ t3 ] 
+	if t4 > v goto L4
+L6:	if false i >= j goto L8
+L9:	goto L2
+L8:	t5 = i * 8
+	x = a [ t5 ] 
+L10:	t6 = i * 8
+	t7 = j * 8
+	t8 = a [ t7 ] 
+	a [ t6 ] = t8
+L11:	t9 = j * 8
+	a [ t9 ] = x
+	goto L1
+L2:
+
+```
+
+
 ## 文件结构
 
 ```
 .
-│  action.json // action表
-│  code.txt // 代码文件
-│  code_analyst.py // 代码行数统计
-│  goto.json // goto表
-│  grammar.json // 文法表
-│  grammar.txt // 文法文件
-│  Intermediate_Language.txt // 中间代码文件
+│  action.json //action 表
+│  code.txt //代码文件
+│  goto.json //goto表
+│  grammar.json //文法表
+│  grammar.txt //文法文件
+│  Intermediate_Language.txt //中间代码输出文件
 │  LICENSE
 │  main.py //程序入口
 │  README.md
@@ -56,7 +83,7 @@ python main.py -a {代码文件地址}
     │  __init__.py
     │  
     ├─lexers
-    │      lexer.py // 词法分析器
+    │      lexer.py //词法分析器
     │      num.py
     │      real.py
     │      tag.py
@@ -65,7 +92,7 @@ python main.py -a {代码文件地址}
     │      __init__.py
     │      
     ├─parsers
-    │      constructor.py // 分析表生成器
+    │      constructor.py //分析表生成器
     │      data.py
     │      first.py
     │      generator.py
@@ -98,9 +125,16 @@ python main.py -a {代码文件地址}
     │      _while.py
     │      __init__.py
     │      
+    ├─statistic
+    │      code_analyst.py //代码统计工具
+    │      visualization.py //输出结果表格工具
+    │      __init__.py
+    │    
+    │          
     └─symbols
-            array.py
-            env.py
-            type.py
-            __init__.py
+           array.py
+           env.py
+           type.py
+           __init__.py
+
 ```
