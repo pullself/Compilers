@@ -25,7 +25,7 @@ class Expr(Node):
         elif t != 0:
             self.emit('if '+test+' goto L'+str(t))
         elif f != 0:
-            self.emit('if false '+test+' goto L'+str(f))
+            self.emit('if not '+test+' goto L'+str(f))
 
     def toString(self):
         return self.op.toString()
