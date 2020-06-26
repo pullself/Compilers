@@ -83,6 +83,7 @@ class Parser:
             self.__gra = None
 
     def __error(self, s, offset=0):
+        self.output.show()
         raise RuntimeError('near line {}:'.format(
             self.__lexer.get_line()-offset)+s)
 
@@ -331,7 +332,7 @@ class Parser:
 
     def __join(self, num):
         if num == 21:
-            x = And(self.cacxhe[1], self.cache[0], self.cache[2])
+            x = And(self.cache[1], self.cache[0], self.cache[2])
             self.__value_stack.append(x)
         else:
             self.__value_stack.append(self.cache[0])
@@ -366,7 +367,6 @@ class Parser:
 
     def __unary(self, num):
         if num == 37:
-            x
             x = Not(self.cache[0], self.cache[1])
         elif num == 38:
             x = Unary(Words.minus, self.cache[1])
