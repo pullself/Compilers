@@ -23,10 +23,10 @@ class Logical(Expr):
         # 是否写成reduce更好（pass）
         f = self.new_label()
         a = self.new_label()
-        temp = Temp(0, f)
+        temp = Temp(self.type)
         self.jumping(0,f)
         self.emit(temp.toString()+' = true')
-        self.emit('goto L'+a)
+        self.emit('goto L'+str(a))
         self.emit_label(f)
         self.emit(temp.toString()+' = false')
         self.emit_label(a)
