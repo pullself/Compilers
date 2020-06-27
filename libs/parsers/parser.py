@@ -369,7 +369,7 @@ class Parser:
         if num == 37:
             x = Not(self.cache[0], self.cache[1])
         elif num == 38:
-            x = Unary(Words.minus, self.cache[1])
+            x = Unary(Token(Tag.MINUS), self.cache[1])
         else:
             x = self.cache[0]
         self.__value_stack.append(x)

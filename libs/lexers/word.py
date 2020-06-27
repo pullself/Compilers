@@ -21,5 +21,4 @@ class Words():
     true = Word('true', Tag.TRUE)
     false = Word('false', Tag.FALSE)
     temp = Word('temp', Tag.TEMP)
-    minus = Word('minus',Tag.MINUS)
     count = 10

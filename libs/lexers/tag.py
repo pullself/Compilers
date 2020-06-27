@@ -78,4 +78,5 @@ Key = {Tag.IF: 'if',
        Tag.ID: 'id',
        Tag.NUM: 'num',
        Tag.REAL: 'real',
-       Tag.END: '#'}
+       Tag.END: '#',
+       Tag.MINUS: '-'}
