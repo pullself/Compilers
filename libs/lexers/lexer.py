@@ -1,4 +1,5 @@
-from libs.lexers.tag import Tag
+import collections
+from libs.lexers.tag import Tag,Key
 from libs.lexers.token import Token
 from libs.lexers.num import Num
 from libs.lexers.real import Real
@@ -289,8 +290,21 @@ class Lexer:
     def get_line(self):
         return Lexer.line[self.no]
 
-    def get_next_word(self) -> tuple:
+    def get_next_word(self):
         '''
         取词接口
         '''
         return self.__scanner()
+
+    def get_word_unit(self) -> tuple:
+        word_unit = collections.namedtuple('word_unit', ['tag', 'value'])
+        x = self.get_next_word()
+        tag = x.tag
+        if isinstance(x, Num) or isinstance(x, Real):
+            value = x.value
+        elif x.tag == Tag.BASIC or x.tag == Tag.ID:
+            value = x.lexeme
+        else:
+            value = None
+        obj = word_unit(tag, value)
+        return obj

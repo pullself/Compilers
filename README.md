@@ -30,6 +30,11 @@ stmt->loc = bool ;|if ( bool ) stmt|if ( bool ) stmt else stmt|while ( bool ) st
 ```
 
 ## 使用方法
+输出词法表
+
+```
+python main.py -l {文法文件地址}
+```
 构造文法分析表
 
 ```
