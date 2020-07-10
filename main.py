@@ -26,7 +26,7 @@ class Main:
         g.output()
 
     def analyze(self, addr):
-        with open(addr, 'r') as f:
+        with open(addr, 'r',encoding='utf-8') as f:
             s = f.readlines()
         le = Lexer(s)
         gr = Parser('action.json', 'goto.json', 'grammar.json', le)
