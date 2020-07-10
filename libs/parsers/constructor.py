@@ -3,7 +3,6 @@ from libs.parsers.data import Data
 from libs.parsers.first import First
 from libs.parsers.generator import Generator
 
-
 class Constructor:
     def __init__(self, addr: str):
         with open(addr, 'r', encoding='utf-8') as f:
@@ -21,3 +20,5 @@ class Constructor:
             json.dump(self.__generater.action, f, ensure_ascii=False)
         with open('goto.json', 'w', encoding='UTF-8') as f:
             json.dump(self.__generater.goto, f, ensure_ascii=False)
+    def get_pic(self):
+        return self.__first,self.__generater
