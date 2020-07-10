@@ -10,7 +10,7 @@ class Tag(Enum):
     DO = 5  # do
     BREAK = 6  # break
     TRUE = 11  # true
-    FALSE = 12  # flase
+    FALSE = 12  # false
     BASIC = 14  # basic
     LEFTBRACE = 15  # {
     RIGHTBRACE = 16  # }

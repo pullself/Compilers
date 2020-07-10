@@ -14,7 +14,7 @@ class Lexer:
            'break': Word('break', Tag.BREAK), 'int': Types.Int,
            'float': Types.Float, 'char': Types.Char,
            'bool': Types.Bool, 'true': Words.true,
-           'flase': Words.false}
+           'false': Words.false}
     # 界符表
     delimiter = ['{', '}', '[', ']', '(', ')',  ';']
     # 各表对应偏移量常量
